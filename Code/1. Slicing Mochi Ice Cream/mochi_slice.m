@@ -351,8 +351,6 @@ function [Engy] = RealEngy_comp(J,Bk,Uk,w,Xp,grid,Vol,mass_p,Qconst,g)
 end
 
 function [E,El,En,K] = E_comp(w,u,dt,Fk,Bob_k,Vol,mass_g,grid,Xp,Qconst,g)
-% function [E,El,En,K] = E_comp(w,u,dt,Fk,Bob_k,Vol,mass_g,grid,Xp,Qconst)
-% function [E] = E_comp(w,u,dt,Fk,Bob_k,Vol,mass_g,grid,Xp,Qconst)
 % function to compute E, given w
 %{  
     input var dims:

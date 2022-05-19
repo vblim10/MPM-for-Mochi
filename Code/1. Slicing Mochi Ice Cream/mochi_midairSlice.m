@@ -430,7 +430,6 @@ function [E,El,En,K] = E_comp(w,u,dt,Fk,Bob_k,Vol,mass_g,grid,Xp,Qconst,g)
     Id = repmat([1 0 0 0 1 0 0 0 1]',1,NP);
     Fup = mult_3d(Id + dt*Dw ,Fk);
     Jup = det_3d(Fup);
-%     Bob_up = Bob_k + dt*( mult_3d(Dw,Bob_k) + multT_3d(Bob_k,Dw) + (1/Wi)*(Id-Bob_k) );
     Wi_inv = bsxfun(@rdivide,1,Wi); % 1/Wi (1xNP)
     Bob_up = Bob_k + dt*( mult_3d(Dw,Bob_k) + multT_3d(Bob_k,Dw) );
     Bob_up = Bob_up + dt*bsxfun(@times,Wi_inv,Id-Bob_k);
