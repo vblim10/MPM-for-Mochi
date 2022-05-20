@@ -171,7 +171,7 @@ while t < tf
     % Initial guess (velocity)     
     w = u(:);           % (d*NG)x1
     
-    % Function handle definitions  
+    % Redefine Function Handles 
     Hinv0 = @(w) w;     % init inv Hessian approx = Id (for LBFGS)
     E = @(w) E_comp(w,u,dtk,Fk,Bob_k,Vol,mass_g,grid,Phi_k,Qconst,g);
     gradE = @(w) gradE_comp(w,u,dtk,Fk,Bob_k,Vol,mass_g,grid,Phi_k,Qconst,g);
@@ -257,7 +257,7 @@ end
 time = toc;
 
 % "Actual" Energy over time
-EvT(k+1,:) = [t,RealEngy(Jk,Bk,Uk,w,Phi_k)]; % [t,E,Q,K,Q_El,Q_N]
+EvT(k+1,:) = [t,RealEngy(Jk,Bk,Uk,w,Phi_k)]; % [t,E,Q,K,Q_El,Q_N,G]
 
 % ++++++++++++++++++++++++++++ PLOTS +++++++++++++++++++++++++++++++++++++
 
