@@ -1,4 +1,5 @@
 % mochi_pound_3d_ani.m
+% Script to render simulation from mochi_pound_3d.m as gif/mp4
 
 % *** IMPORT WORKSPACE (from mochi_pound_3d.m run) ***
 
