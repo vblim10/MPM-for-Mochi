@@ -277,7 +277,7 @@ end
 time = toc;
 
 % "Actual" Energy over time 
-EvT(k+1,:) = [t,RealEngy(Jk,Bk,Uk,w,Phi_k,Qconst)]; % [t,E,Q,K,Q_El,Q_N]
+EvT(k+1,:) = [t,RealEngy(Jk,Bk,Uk,w,Phi_k,Qconst)]; % [t,E,Q,K,Q_El,Q_N,G]
 
 % ++++++++++++++++++++++++++++ PLOTS +++++++++++++++++++++++++++++++++++++
 
