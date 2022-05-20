@@ -309,7 +309,6 @@ function [Engy] = RealEngy_comp(J,Bk,Uk,w,Xp,grid,Vol,mass_p,Qconst,g)
     w           3 x NG
     Vol         NP x 1
     mass_p      NP x 1
-    Qconst      struct of scalar constants
 
     funct var dims: 
     Vol_k               NP x 1
