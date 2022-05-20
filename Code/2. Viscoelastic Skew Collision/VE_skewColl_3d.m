@@ -204,8 +204,8 @@ while t < tf
     [Phi_up,Vk,Bm] = G2P_APIC(grid,Phi_k,xup,w); 
 
     % Graph 
-    scatter3(Phi_up(:,1),Phi_up(:,2),Phi_up(:,3),psize,'filled','co'); hold on;
-    scatter3(Ei(:),Ej(:),Ek(:),1,'+','b'); hold on;
+    scatter3(Phi_up(:,1),Phi_up(:,2),Phi_up(:,3),psize,'filled','co'); hold on; % particles
+    scatter3(Ei(:),Ej(:),Ek(:),sqSz,'+','b'); hold on; % grid
     title(num2str(kb),num2str(t)); xlabel(num2str(k)); ylabel(num2str(dtk));
     hold off; pause(1e-10);
     
@@ -231,6 +231,8 @@ time = toc;
 
 % "Actual" Energy over time 
 EvT(k+1,:) = [t,RealEngy(Jk,Bk,Uk,w,Phi_k)]; % [t,E,Q,K,Q_El,Q_N,G]
+
+% ++++++++++++++++++++++++++++ PLOTS +++++++++++++++++++++++++++++++++++++
 
 % Energy Plots
 figure(2)
