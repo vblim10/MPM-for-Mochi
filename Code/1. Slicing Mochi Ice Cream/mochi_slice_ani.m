@@ -1,4 +1,5 @@
 % mochi_slice_ani.m
+% Script to render simulation from mochi_slice.m as gif/mp4
 
 % *** IMPORT WORKSPACE (from mochi_slice.m run) ***
 
