@@ -1,4 +1,5 @@
 % VE_skewColl_3d_ani.m
+% Script to render simulation from VE_skewColl_3d.m as gif/mp4
 
 % *** IMPORT WORKSPACE (from VE_skewColl_3d.m run) ***
 
