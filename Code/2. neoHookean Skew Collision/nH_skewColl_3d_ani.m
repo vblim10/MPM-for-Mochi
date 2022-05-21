@@ -28,7 +28,8 @@
 %}
 
 % VIEWS ("calibrated")
-az = 22.3778; el = 25.1439; % good angle
+% az = 22.3778; el = 25.1439; % good angle
+az = 8.3243; el = 25.1439;  % good angle 2
 % az = 0.7234; el = 90;       % top down (xy-plane)
 % az = 90.0205; el = 0.0776;  % side view (yz-plane)
 % az = 0.0447; el = 0.0677;   % side view (xz-plane)
