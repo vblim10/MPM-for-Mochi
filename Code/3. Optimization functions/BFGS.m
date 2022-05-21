@@ -8,7 +8,7 @@ INPUT:
     x       = initial guess for solution 
     f       = function handle of Objective Function f(x)
     grad_f  = function handle of Gradient of f(x)
-    M       = inverse hessian approximation
+    M       = inverse Hessian approximation
     tol     = tolerance
 
 OUTPUT: 
@@ -17,7 +17,7 @@ OUTPUT:
     M       = inverse hessian approximation
 %}
 % Constants: 
-    be = 1;             % contraction factor
+    be = 0.50;          % contraction factor beta
     c1 = 0.125;         % Wolfe constant 
     
 % Initial guess:
@@ -29,7 +29,7 @@ OUTPUT:
     
 % Begin:
     k  = 1;
-    while sqrt(abs(Tk)) >= tol
+    while sqrt(abs(Tk)) > tol
         al  = 1.0;                  % init. step size: alpha = 1
         xup = x - al*pk;    
         
@@ -47,7 +47,7 @@ OUTPUT:
         yk = yk + gk;
         rk = 1 / dot(yk,sk); 
         if k == 1
-            M = (dot(yk,sk)/dot(yk,yk)) * eye(length(x)); % lambda*I
+            M = (dot(yk,sk)/dot(yk,yk)) * eye(length(x)); % lambda*Id
         end   
         M  = M - rk*(M*yk)*(sk');                         % + "right"
         M  = M - rk*sk*(((M')*yk)') + rk*sk*(sk');        % + "left" + 3rd
