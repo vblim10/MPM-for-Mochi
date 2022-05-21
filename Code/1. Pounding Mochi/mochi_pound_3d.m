@@ -744,11 +744,11 @@ var dimensions:
     Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3); 
     hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
     nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-    Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1); 
-    bx = b(1); by = b(2); bz = b(3);
+    Yp = Xp(:,2);   Zp = Xp(:,3);   Xp = Xp(:,1); 
+    bx = b(1);      by = b(2);      bz = b(3);
 
     % Call C function
-    fp = G2P_PIC_3d(Ox, Oy, Oz, hx, hy, hz, nx, ny, nz, Xp, Yp, Zp, fg, bx, by, bz);
+    fp = G2P_PIC_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, fg, bx,by,bz);
 end
 
 function fg = P2G_PIC(grid,Xp,fp,b)
@@ -765,11 +765,11 @@ var dimensions:
     Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3); 
     hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
     nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-    Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1); 
-    bx = b(1); by = b(2); bz = b(3);
+    Yp = Xp(:,2);   Zp = Xp(:,3);   Xp = Xp(:,1); 
+    bx = b(1);      by = b(2);      bz = b(3);
 
     % Call C function
-    fg = P2G_PIC_3d(Ox, Oy, Oz, hx, hy, hz, nx, ny, nz, Xp, Yp, Zp, fp, bx, by, bz);
+    fg = P2G_PIC_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, fp, bx,by,bz);
 end
 
 function [vp] = G2P_vec(grid,Xp,vg,b)
@@ -786,12 +786,12 @@ var dimensions:
 Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3);
 hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
 nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1);
-fg1 = vg(1,:); fg2 = vg(2,:); fg3 = vg(3,:);
-bx = b(1); by = b(2); bz = b(3);
+Yp = Xp(:,2);   Zp = Xp(:,3);   Xp = Xp(:,1);
+fg1 = vg(1,:);  fg2 = vg(2,:);  fg3 = vg(3,:);
+bx = b(1);      by = b(2);      bz = b(3);
 
 % Call C function
-[fp1, fp2, fp3] = G2P_vec_3d(Ox, Oy, Oz, hx, hy, hz, nx, ny, nz, Xp, Yp, Zp, fg1, fg2, fg3, bx, by, bz);
+[fp1,fp2,fp3] = G2P_vec_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, fg1,fg2,fg3, bx,by,bz);
 
 % Package Outputs
 vp = [fp1; fp2; fp3];
@@ -811,12 +811,12 @@ var dimensions:
 Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3);
 hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
 nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1);
-fp1 = vp(1,:); fp2 = vp(2,:); fp3 = vp(3,:);
-bx = b(1); by = b(2); bz = b(3);
+Yp = Xp(:,2);   Zp = Xp(:,3);   Xp = Xp(:,1);
+fp1 = vp(1,:);  fp2 = vp(2,:);  fp3 = vp(3,:);
+bx = b(1);      by = b(2);      bz = b(3);
 
 % Call C function
-[fg1, fg2, fg3] = P2G_vec_3d(Ox, Oy, Oz, hx, hy, hz, nx, ny, nz, Xp, Yp, Zp, fp1, fp2, fp3, bx, by, bz);
+[fg1,fg2,fg3] = P2G_vec_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, fp1,fp2,fp3, bx,by,bz);
 
 % Package Outputs
 vg = [fg1; fg2; fg3];
@@ -838,8 +838,7 @@ var dimensions:
 Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3);
 hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
 nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1);
-% dt = dt;
+Yp = Xp(:,2);   Zp = Xp(:,3);   Xp = Xp(:,1);
 vx = v(1,:); vy = v(2,:); vz = v(3,:);
 F1 = F(1,:); F2 = F(2,:); F3 = F(3,:);
 F4 = F(4,:); F5 = F(5,:); F6 = F(6,:);
@@ -864,12 +863,12 @@ var dimensions:
 %}
 
 % Parse inputs (unpack)
-Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3);
-hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
-nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1);
-xup1 = xup(1,:); xup2 = xup(2,:); xup3 = xup(3,:);
-w1 = w(1,:); w2 = w(2,:); w3 = w(3,:);
+Ox = grid.O(1);     Oy = grid.O(2);     Oz = grid.O(3);
+hx = grid.h(1);     hy = grid.h(2);     hz = grid.h(3);
+nx = grid.n(1);     ny = grid.n(2);     nz = grid.n(3);
+Yp = Xp(:,2);       Zp = Xp(:,3);       Xp = Xp(:,1);
+xup1 = xup(1,:);    xup2 = xup(2,:);    xup3 = xup(3,:);
+w1 = w(1,:);        w2 = w(2,:);        w3 = w(3,:);
 
 % Call C function
 [Phi1,Phi2,Phi3, Vp1,Vp2,Vp3, B1,B2,B3,B4,B5,B6,B7,B8,B9] = G2P_APIC_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, xup1,xup2,xup3, w1,w2,w3);
@@ -896,15 +895,15 @@ var dimensions:
 Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3);
 hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
 nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1);
-B1 = B(1,:); B2 = B(2,:); B3 = B(3,:); 
-B4 = B(4,:); B5 = B(5,:); B6 = B(6,:);
-B7 = B(7,:); B8 = B(8,:); B9 = B(9,:); 
+Yp = Xp(:,2);   Zp = Xp(:,3);   Xp = Xp(:,1);
+B1 = B(1,:);    B2 = B(2,:);    B3 = B(3,:); 
+B4 = B(4,:);    B5 = B(5,:);    B6 = B(6,:);
+B7 = B(7,:);    B8 = B(8,:);    B9 = B(9,:); 
 mom_p1 = mom_p(1,:); mom_p2 = mom_p(2,:); mom_p3 = mom_p(3,:);
 mass_p = mass_p(:);
 
 % Call C function
-[mom_g1,mom_g2,mom_g3,mass_g] = P2G_APIC_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, B1,B2,B3,B4,B5,B6,B7,B8,B9, mom_p1,mom_p2,mom_p3, mass_p);
+[mom_g1,mom_g2,mom_g3, mass_g] = P2G_APIC_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, B1,B2,B3,B4,B5,B6,B7,B8,B9, mom_p1,mom_p2,mom_p3, mass_p);
 
 % Package Outputs
 mom_g = [mom_g1; mom_g2; mom_g3];
@@ -923,8 +922,8 @@ var dimensions:
 Ox = grid.O(1); Oy = grid.O(2); Oz = grid.O(3);
 hx = grid.h(1); hy = grid.h(2); hz = grid.h(3);
 nx = grid.n(1); ny = grid.n(2); nz = grid.n(3);
-Yp = Xp(:,2); Zp = Xp(:,3); Xp = Xp(:,1);
-vx = v(1,:); vy = v(2,:); vz = v(3,:);
+Yp = Xp(:,2);   Zp = Xp(:,3);   Xp = Xp(:,1);
+vx = v(1,:);    vy = v(2,:);    vz = v(3,:);
 
 % Call C function
 [DV1,DV2,DV3,DV4,DV5,DV6,DV7,DV8,DV9] = DV_comp_3d(Ox,Oy,Oz, hx,hy,hz, nx,ny,nz, Xp,Yp,Zp, vx,vy,vz);
