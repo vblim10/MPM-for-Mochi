@@ -206,7 +206,7 @@ while t < tf
     % Particle Advection (collision corrected Lag velocity) 
     Phi_up = Phi_k + dtk*Vk';
 
-    % Graph 
+    % GRAPH
     scatter3(Phi_up(Idx_cream,1),Phi_up(Idx_cream,2),Phi_up(Idx_cream,3),psize,'filled','m'); hold on; % ice cream
     scatter3(Phi_up(Idx_mochi,1),Phi_up(Idx_mochi,2),Phi_up(Idx_mochi,3),psize,'filled','g'); hold on; % mochi
     scatter3(blade1.x_co(:,1),blade1.x_co(:,2),blade1.x_co(:,3),psize,'filled','k'); hold on; % blade1 
