@@ -4,7 +4,7 @@
 d = 3;              % dimension
 CFL = 0.25;
 tf  = 25.0;         % final time
-dtk = 0.01;         % uniform time step
+dtk = 0.10;         % uniform time step
 g = 9.80665/100;    % gravitational constant
 
 % Material & Plot settings
