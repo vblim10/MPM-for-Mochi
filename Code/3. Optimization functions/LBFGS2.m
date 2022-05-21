@@ -1,4 +1,6 @@
 % LBFGS2.m
+% L-BFGS optimization function we use with MPM
+% function to find minimizer x of functional f
 
 function [x,it,ng] = LBFGS2(x,f,grad_f,H,L2_rho,m,tol)
 %{
