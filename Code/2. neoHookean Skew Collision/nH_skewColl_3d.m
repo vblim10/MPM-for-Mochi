@@ -28,7 +28,7 @@ a = 20.0; b = 12.0; c = 8.0; % Eul mesh domain: x=0:a, y=0:b, z=0:c
 h = [1.0, 1.0, 1.0];         % grid stepsize (20x12x8 grid cells)   
 % h = [0.5, 0.5, 0.5];         % grid stepsize (40x24x16 grid cells) 
 
-% Grid & Particle initialization
+% Grid initialization
 x = 0:h(1):a;       % without padding
 y = 0:h(2):b;
 z = 0:h(3):c;
@@ -82,14 +82,13 @@ BCg = find(BCg(:));
     Xk2 = Xk1 + (c2z-c1z);
     
 % All particles coords 
-    Phi_k = [Xi1, Xj1, Xk1; Xi2, Xj2, Xk2]; % NP x 3           
+    Phi_k = [Xi1, Xj1, Xk1; Xi2, Xj2, Xk2]; % NPx3           
     NP = size(Phi_k,1);                     % # particles
     
 % =========================== CHECK GRAPH ================================
     figure(1)
     scatter3(Phi_k(:,1),Phi_k(:,2),Phi_k(:,3),psize,'filled','c'); hold on;
-    scatter3(Ei(:),Ej(:),Ek(:),sqSz,'+','b');
-    hold off;
+    scatter3(Ei(:),Ej(:),Ek(:),sqSz,'+','b'); hold off;
 
 % ============================ Step k = 0 ================================
 tic
@@ -120,7 +119,6 @@ t = 0;      % time at step k
     % "Actual" Energy over time 
     % funct. handle: Vol, mass_p, elast, & g are constant over time
     RealEngy = @(J,Fk,Uk,Xp) RealEngy_comp(J,Fk,Uk,Xp,Vol,mass_p,elast,g);
-    u = P2G_vec(grid,Phi_k,Uk,[0 0 0]); w = u; % so we can compute init. Engy
        
     % Tolerance (for minimization)
     tol = min([max(h)^4, 1e-4, max(h)^-4]); % cases: h<1, h=1, h>1
