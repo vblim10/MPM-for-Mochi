@@ -3,8 +3,8 @@
 
 d = 2;              % dimension
 CFL = 0.25;
-tf  = 12.0;         % final time
-dtk = 0.10;         % uniform time step
+tf  = 30.0;         % final time
+dtk = 0.01;         % uniform time step
 g = 9.80665/100;    % gravitational constant
 
 % Material & Plot settings
@@ -51,13 +51,13 @@ BCg = find(BCg(:));
 % ======================= LAGRANGIAN PARTICLES ===========================
 % Cyllinder initial values
     % c1 
-    c1x = 3.0;   c1y = 5.0;     % center = (3.0,5.0)
-    v1x = 0.75;  v1y = 0.0;     % velocity = <0.75,0>
-    r1in = 1.0;  r1out = 2.0;   % inner, outer radius
+    c1x = 4.0;   c1y = 5.0;     % center = (4.0,5.0)
+    v1x = 3.0;   v1y = 1.5;     % velocity = <3.0,1.5>
+    r1in = 0.0;  r1out = 2.0;   % inner, outer radius
     % c2 (*** assuming: c2 & c1 have same radii ***)
-    c2x = 16.0;  c2y = 7.0;     % center = (16.0,7.0)
-    v2x = -0.75; v2y = 0.0;     % velocity = <-0.75,0>
-    r2in = 1.0;  r2out = 2.0;   % inner, outer radius
+    c2x = 16.0;  c2y = 5.0;     % center = (16.0,5.0)
+    v2x = -3.0;  v2y = 1.5;     % velocity = <-3.0,1.5>
+    r2in = 0.0;  r2out = 2.0;   % inner, outer radius
 
 % c1 (center=(3.0,5.0), radius=2.0)
     xc = (c1x-r1out) + h(1)/(2*ppc) : h(1)/ppc : (c1x+r1out) - h(1)/(2*ppc);  
@@ -271,7 +271,7 @@ function [Engy] = RealEngy_comp(J,Fk,Uk,Xp,Vol,mass_p,elast,g)
     Engy = [E, Q, K, El, G];
 end
 
-function [E,El,K,G] = E_comp(w,u,dtk,Fk,Vol,mass_g,grid,Xp,elast,g)
+function [E,El,K,G] = E_comp(w,u,dt,Fk,Vol,mass_g,grid,Xp,elast,g)
 % function to compute E, given w
 %{  
     input var dims:
@@ -298,7 +298,7 @@ function [E,El,K,G] = E_comp(w,u,dtk,Fk,Vol,mass_g,grid,Xp,elast,g)
     u = reshape(u,[d NG]);
     
 % Compute Ftk
-    Ftk = F_comp(grid,Xp,dtk/2,w+u,Fk);
+    Ftk = F_comp(grid,Xp,dt/2,w+u,Fk);
     
 % Elastic Energy: El
     % H(F) = W(F'F) = W(C)
@@ -318,7 +318,7 @@ function [E,El,K,G] = E_comp(w,u,dtk,Fk,Vol,mass_g,grid,Xp,elast,g)
     E = El + 0.25*dt*G + K;
 end
 
-function [gradE] = gradE_comp(w,u,dtk,Fk,Vol,mass_g,grid,Xp,elast,g)
+function [gradE] = gradE_comp(w,u,dt,Fk,Vol,mass_g,grid,Xp,elast,g)
 % function to compute gradE, given w
 %{  
     input var dims:
@@ -342,7 +342,7 @@ function [gradE] = gradE_comp(w,u,dtk,Fk,Vol,mass_g,grid,Xp,elast,g)
     u = reshape(u,[d NG]);
     
 % Compute Ftk
-    Ftk = F_comp(grid,Xp,dtk/2,w+u,Fk);
+    Ftk = F_comp(grid,Xp,dt/2,w+u,Fk);
     
 % Elastic Energy: gradEl
     % P(F) = DH(F)
@@ -353,7 +353,7 @@ function [gradE] = gradE_comp(w,u,dtk,Fk,Vol,mass_g,grid,Xp,elast,g)
     
     % B
     B = multT_2d(P,Fk); % 4xNP  
-    B = 0.25 * dtk * bsxfun(@times,B,Vol');
+    B = 0.25 * dt * bsxfun(@times,B,Vol');
     
     % [vg] = P2G_vec(grid,Xp,vp,b)
     gradEl = P2G_vec(grid,Xp,B(1:2,:),[1 0]) + P2G_vec(grid,Xp,B(3:4,:),[0 1]); % dxNG
