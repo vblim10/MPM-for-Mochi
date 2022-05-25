@@ -6,7 +6,7 @@
 
 d = 3;              % dimension
 CFL = 0.25; 
-tf  = 1.0;
+tf  = 0.9;
 g = 1.0;            % gravitational constant
 dtk = 0.0166;       % (dtk=0.0333, 30 fps) (dtk=0.0667, 15 fps)
 
