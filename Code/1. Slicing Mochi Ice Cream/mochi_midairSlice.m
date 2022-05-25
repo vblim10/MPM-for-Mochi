@@ -5,7 +5,7 @@
 
 d = 3;              % dimension
 CFL = 0.25;
-tf  = 1.5;
+tf  = 2.5;
 g = 0.0; %1.0;      % gravitational constant
 dtk = 0.0166;       % (dtk=0.0333, 30 fps) (dtk=0.0667, 15 fps)
 
@@ -67,7 +67,7 @@ blade1.o = [16 17];
 blade1.x_co = RotateXZ(Phi_blade', blade1.d)'+ [blade1.o(1) 0 blade1.o(2)];    
 blade1.v_co = [-11; 0; -11];    % init. vel = <-11,0,-11>   (3 x 1)
 blade1.n_co = RotateXZ(n_co, blade1.d); 
-blade1.a_co = [0; 0; 0]; %(3 x 1)
+blade1.a_co = [0; 0; 0];        % (3 x 1)
 
 % Blade 2
 blade2 = blade1;
@@ -76,7 +76,7 @@ blade2.o = [-2 19];
 blade2.x_co = RotateXZ(Phi_blade', blade2.d)' + [blade2.o(1) 0 blade2.o(2)];    
 blade2.v_co = [11; 0; -11];     % init. vel = <11,0,-11>    (3 x 1)
 blade2.n_co = RotateXZ(n_co, blade2.d); 
-blade2.a_co = [0; 0; 0]; %(3 x 1)  
+blade2.a_co = [0; 0; 0];        % (3 x 1)  
 
 % Blade 3
 blade3 = blade1;
@@ -85,7 +85,7 @@ blade3.o = [28 8];
 blade3.x_co = RotateXZ(Phi_blade', blade3.d)' + [blade3.o(1) 0 blade3.o(2)];    
 blade3.v_co = [-15.5; 0; 0];    % init. vel = <-15.5,0,0>   (3 x 1)
 blade3.n_co = RotateXZ(n_co, blade3.d); 
-blade3.a_co = [0; 0; 0]; %(3 x 1)
+blade3.a_co = [0; 0; 0];        % (3 x 1)
 
 % =========================== CHECK GRAPH ================================
 figure(1)
