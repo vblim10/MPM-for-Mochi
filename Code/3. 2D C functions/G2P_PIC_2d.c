@@ -33,7 +33,7 @@ double N_weight2(double x, double bw) // new version
 {
     // bw = 1: returns Nx 
     // bw = 0: returns N 
-    int sgn = (x>0)?1:-1;
+    int sgn = (x>0)?1:-1;   // if true, then set sgn = 1, else set sgn = -1
 
     x = fabs(x);    // *** abs function is for ints only (in C) ***
     double N = 0.0;
